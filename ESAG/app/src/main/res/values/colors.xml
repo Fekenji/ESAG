@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green_water">#5CC6BA</color>
     <color name="light_gray">#F1F2F4</color>
+    <color name="primary_light_blue">#B7F2FF</color>
+    <color name="secondary_light_blue">#A3E5F3</color>
+    <color name="primary_opaque_blue">#EBFBFE</color>
 </resources>
