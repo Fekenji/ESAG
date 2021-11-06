@@ -14,6 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,6 +43,46 @@ public class LoginActivity extends AppCompatActivity {
 
         tvCadastro.setText(ss); // Coloca o texto no TextView
         tvCadastro.setMovementMethod(LinkMovementMethod.getInstance()); // Cria o movimento de redirecionamento de página
+
+        btnEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doLogin();
+            }
+        });
+    }
+
+    private void doLogin(){
+
+        String email = etEmail.getText().toString();
+        String senha = etSenha.getText().toString();
+        String telefone = "";
+        String nome = "";
+
+        Usuario usuario = new Usuario(email, senha, telefone, nome);
+
+        Call<Usuario> call = RetrofitClient.getRetrofitInstance().getMyApi().doLogin(usuario);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if(response.body() != null)
+                {
+                    Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Toast.makeText(LoginActivity.this, "Por favor tente novamente", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                String messageProblem = t.getMessage().toString();
+                Toast.makeText(LoginActivity.this, messageProblem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     class CustomClickableSpan extends ClickableSpan {

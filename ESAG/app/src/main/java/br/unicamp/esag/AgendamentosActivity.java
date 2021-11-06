@@ -9,6 +9,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
 
 public class AgendamentosActivity extends AppCompatActivity {
 
@@ -23,9 +26,10 @@ public class AgendamentosActivity extends AppCompatActivity {
         lvAgendamentos = (ListView) findViewById(R.id.lViewAgendamentos);
         ibMenu = (ImageButton) findViewById(R.id.ibMenu);
 
-        ArrayList<String> teste = preencherDados();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teste);
-        lvAgendamentos.setAdapter(adapter);
+        //ArrayList<String> teste = preencherDados();
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teste);
+        //lvAgendamentos.setAdapter(adapter);
+
 
         ibMenu.setOnClickListener(new View.OnClickListener() {
             @Override
