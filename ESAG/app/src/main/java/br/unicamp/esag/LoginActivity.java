@@ -56,33 +56,32 @@ public class LoginActivity extends AppCompatActivity {
 
         String email = etEmail.getText().toString();
         String senha = etSenha.getText().toString();
-        String telefone = "";
         String nome = "";
 
-        Usuario usuario = new Usuario(email, senha, telefone, nome);
+        Usuario usuario = new Usuario(email, senha, nome);
 
-        Call<Usuario> call = RetrofitClient.getRetrofitInstance().getMyApi().doLogin(usuario);
-        call.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                if(response.body() != null)
-                {
-                    Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else{
-                    Toast.makeText(LoginActivity.this, "Por favor tente novamente", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                String messageProblem = t.getMessage().toString();
-                Toast.makeText(LoginActivity.this, messageProblem, Toast.LENGTH_SHORT).show();
-                Toast.makeText(LoginActivity.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();
-            }
-        });
+//        Call<Usuario> call = RetrofitClient.getRetrofitInstance().getMyApi().cadastrarUsuario(usuario);
+//        call.enqueue(new Callback<Usuario>() {
+//            @Override
+//            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+//                if(response.body() != null)
+//                {
+//                    Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                else{
+//                    Toast.makeText(LoginActivity.this, "Por favor tente novamente", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Usuario> call, Throwable t) {
+//                String messageProblem = t.getMessage().toString();
+//                Toast.makeText(LoginActivity.this, messageProblem, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(LoginActivity.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
     class CustomClickableSpan extends ClickableSpan {

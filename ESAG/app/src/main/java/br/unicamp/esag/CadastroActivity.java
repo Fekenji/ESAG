@@ -11,13 +11,20 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.JsonObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -32,13 +39,11 @@ public class CadastroActivity extends AppCompatActivity {
 
         etNome = (EditText) findViewById(R.id.etNome);
         etEmail = (EditText) findViewById(R.id.etEmail);
-        etTelefone = (EditText) findViewById(R.id.etTelefone);
         etSenha = (EditText) findViewById(R.id.etSenha);
         tvLogin = (TextView) findViewById(R.id.tvLogin);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
 
         // Formatação brasileira de telefone
-        etTelefone.addTextChangedListener(new PhoneNumberFormattingTextWatcher("BR"));
 
         // Cria um objeto contendo uma string
         SpannableString ss = new SpannableString("Já tem conta? Clique aqui para entrar!");
@@ -50,11 +55,36 @@ public class CadastroActivity extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String telefone = etNome.getText().toString();
 
-                if (telefone.trim() == "") {
-                    Snackbar.make(view, "Pão", BaseTransientBottomBar.LENGTH_LONG).show();
-                }
+                String nome = etNome.getText().toString();
+                String email = etEmail.getText().toString();
+                String senha = etSenha.getText().toString();
+
+                Usuario usuario = new Usuario(email, senha,nome);
+
+                Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().cadastrarUsuario(usuario);
+                call.enqueue(new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        Log.e("request", call.request().body().toString());
+                        if(response.isSuccessful())
+                        {
+                            Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else
+                        {
+                            Log.e("errMessage", response.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+                        Log.e("onFailureError", t.getMessage());
+                    }
+                });
+
             }
         });
 

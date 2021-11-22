@@ -11,18 +11,14 @@ public class Usuario implements Serializable{
     @SerializedName("senhaUsuario")
     private String senhaUsuario;
 
-    @SerializedName("telefoneUsuario")
-    private String telefoneUsuario;
-
     @SerializedName("nomeUsuario")
     private String nomeUsuario;
 
 
-    public Usuario(String email, String senha, String telefone, String nome)
+    public Usuario(String email, String senha, String nome)
     {
         this.emailUsuario = email;
         this.senhaUsuario = senha;
-        this.telefoneUsuario = telefone;
         this.nomeUsuario = nome;
     }
 
@@ -39,13 +35,6 @@ public class Usuario implements Serializable{
     }
     public void setSenhaUsuario(String senhaUsuario) {
         this.senhaUsuario = senhaUsuario;
-    }
-
-    public String getTelefoneUsuario() {
-        return telefoneUsuario;
-    }
-    public void setTelefoneUsuario(String telefoneUsuario) {
-        this.telefoneUsuario = telefoneUsuario;
     }
 
     public String getNomeUsuario() {
