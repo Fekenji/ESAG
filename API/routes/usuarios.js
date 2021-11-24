@@ -2,27 +2,8 @@ const express = require('express')
 const router = express.Router()
 const mysql = require('../mysql').pool
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
-
-router.post('/login', (req, res, next) => {
-
-    mysql.getConnection((error, conn) => {
-        conn.query(
-            'SELECT emailUsuario FROM usuario WHERE emailUsuario = ? AND senhaUsuario = ?',
-            [req.body.emailUsuario, req.body.senhaUsuario],
-            (error, resultado, fields) => {
-                conn.release()
-
-                if (error) {
-                    return res.status(500).send({ error: error })
-                }
-
-                res.send(resultado)
-            }
-        )
-    })
-
-})
 
 router.get('/cadastro', (req, res, next) => {
     res.send({
@@ -30,22 +11,20 @@ router.get('/cadastro', (req, res, next) => {
     })
 })
 
-router.post('/cadastro', (req, res, next) => { 
-    console.log(res)   
-
+router.post('/cadastro', (req, res, next) => {     
     mysql.getConnection((error, conn) => {
 
-        if (error) { return res.status(500).send({ "error": error }) }
-        bcrypt.hash(req.body.senhaUsuario, 10, (bcryptError, hash) => {
-            if (bcryptError) { return res.status(500).send({ "error": bcryptError }) }
+        if (error) { return res.status(500).send({ error: error }) }
+        bcrypt.hash(req.body.senhaUsuario, 10,(bcryptError, hash) => {
+            if (bcryptError) { return res.status(500).send({ error: bcryptError }) }            
             conn.query(
                 'INSERT INTO usuario VALUES (?,?,?)',
                 [req.body.emailUsuario, hash, req.body.nomeUsuario],
                 (error, resultado) => {
                     conn.release()
-                    if(error) { console.log(error.message);return res.status(500).send({"error": error.message})}
+                    if(error) { console.log(error.message);return res.status(500).send({error: error})}
                     const response = "Usuario criadio :)"                    
-                    res.status(201).send({"mensagem":"usuario criado"}); 
+                    res.status(201).send({mensagem:"usuario criado"}); 
 
                 }
             )
@@ -54,6 +33,42 @@ router.post('/cadastro', (req, res, next) => {
     })
 
 
+})
+
+router.post('/login', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        
+        if(error) { return res.status(500).send({ "error": error }) }
+        conn.query(
+            'SELECT * FROM USUARIO WHERE emailUsuario = ?',
+            [req.body.emailUsuario],
+            (error, results) =>{                
+                conn.release()
+                if(error) { return res.status(500).send({ error: error }) }
+                if(results.lenght < 1) { return res.status(401).send({ mensagem: "Erro na autenticação de usuario"}) }
+
+                bcrypt.compare(req.body.senhaUsuario, results[0].senhaUsuario, (error, resultado) => {
+                    if (error) { 
+                        return res.status(401).send({ mensagem: "Erro na autenticação de usuario"}) 
+                    }
+                    if(resultado) {
+                        const token = jwt.sign({
+                            emailUsuario: results[0].emailUsuario,
+                            nomeUsuario: results[0].nomeUsuario
+                        }, process.env.TOKEN_KEY,
+                        {
+                            expiresIn: "2d"
+                        })
+                        return res.status(200).send({ 
+                            mensagem: "Usuario autenticado",
+                            token: token
+                        })
+                    }
+                    return res.status(401).send({ mensagem: "Erro na autenticação de usuario"}) 
+                })
+            }
+        )
+    })
 })
 
 router.patch('/usuarios', (req, res, next) => {

@@ -4,6 +4,8 @@
         "MYSQL_PASSWORD":"",
         "MYSQL_DATABASE":"dbesag",
         "MYSQL_HOST":"localhost",
-        "MYSQL_PORT":3306
+        "MYSQL_PORT":3306,
+
+        "TOKEN_KEY":"Felipe Kenji"
     }
 }
