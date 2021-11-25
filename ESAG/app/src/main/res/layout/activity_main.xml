@@ -7,9 +7,14 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <Button
-        android:id="@+id/btnTeste"
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Teste"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/simbolo"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="273dp" />
 </LinearLayout>

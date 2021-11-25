@@ -13,6 +13,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -28,7 +29,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnTeste;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
@@ -36,18 +36,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnTeste = (Button) findViewById(R.id.btnTeste);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         buscarInformacoesGPS();
 
-        btnTeste.setOnClickListener(new View.OnClickListener() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SplashActivity.class);
-                startActivity(intent);
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
+                startActivity(intent);;
+                finish();
             }
-        });
+        }, 2000);
+
     }
 
     public void buscarInformacoesGPS() {
