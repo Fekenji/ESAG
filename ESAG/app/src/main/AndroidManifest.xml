@@ -16,9 +16,6 @@
             android:name=".AlteracaoActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
-            android:exported="false" />
-        <activity
             android:name=".AgendamentosActivity"
             android:exported="true" />
         <activity
