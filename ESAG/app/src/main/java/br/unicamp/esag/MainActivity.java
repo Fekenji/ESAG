@@ -30,12 +30,14 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     FusedLocationProviderClient fusedLocationProviderClient;
+    Token token;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        token = new Token(getApplicationContext());
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         buscarInformacoesGPS();
@@ -44,7 +46,13 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
+                if(token.getToken() != "")
+                {
+                    intent = new Intent(MainActivity.this, AgendamentosActivity.class);
+                }
+                else
+                    intent = new Intent(MainActivity.this, LoginActivity.class);
+
                 startActivity(intent);;
                 finish();
             }
