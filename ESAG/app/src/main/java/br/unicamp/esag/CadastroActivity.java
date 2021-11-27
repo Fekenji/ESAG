@@ -66,7 +66,6 @@ public class CadastroActivity extends AppCompatActivity {
                 call.enqueue(new Callback<JsonObject>() {
                     @Override
                     public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                        Log.e("request", call.request().body().toString());
                         if(response.isSuccessful())
                         {
                             Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
@@ -75,7 +74,7 @@ public class CadastroActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Log.e("errMessage", response.toString());
+                            Toast.makeText(getApplicationContext(), "E-mail inválido", Toast.LENGTH_SHORT);
                         }
                     }
 

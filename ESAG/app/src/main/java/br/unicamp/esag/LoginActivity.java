@@ -10,11 +10,14 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,36 +55,38 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void doLogin(){
+    public void doLogin(){
+        Log.e("debug", "entrou aqui");
 
         String email = etEmail.getText().toString();
         String senha = etSenha.getText().toString();
         String nome = "";
-
         Usuario usuario = new Usuario(email, senha, nome);
+        Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().login(usuario);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                if(response.isSuccessful())
+                {
+                    String receivedToken = response.body().get("token").toString();
+                    Token token = new Token(getApplicationContext());
+                    token.setToken(receivedToken);
+                    Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Log.e("json response", response.body().toString());
+                    Toast.makeText(LoginActivity.this, "E-mail ou senha inválidos", Toast.LENGTH_LONG).show();
+                }
+            }
 
-//        Call<Usuario> call = RetrofitClient.getRetrofitInstance().getMyApi().cadastrarUsuario(usuario);
-//        call.enqueue(new Callback<Usuario>() {
-//            @Override
-//            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-//                if(response.body() != null)
-//                {
-//                    Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//                else{
-//                    Toast.makeText(LoginActivity.this, "Por favor tente novamente", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Usuario> call, Throwable t) {
-//                String messageProblem = t.getMessage().toString();
-//                Toast.makeText(LoginActivity.this, messageProblem, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(LoginActivity.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();
-//            }
-//        });
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                String messageProblem = t.getMessage().toString();
+                Toast.makeText(LoginActivity.this, messageProblem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     class CustomClickableSpan extends ClickableSpan {

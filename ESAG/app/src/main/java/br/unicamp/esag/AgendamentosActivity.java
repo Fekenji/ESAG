@@ -3,6 +3,7 @@ package br.unicamp.esag;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -17,11 +18,15 @@ public class AgendamentosActivity extends AppCompatActivity {
 
     ListView lvAgendamentos;
     ImageButton ibMenu;
+    Token token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agendamentos);
+
+        token = new Token(getApplicationContext());
+
 
         lvAgendamentos = (ListView) findViewById(R.id.lViewAgendamentos);
         ibMenu = (ImageButton) findViewById(R.id.ibMenu);
@@ -34,7 +39,7 @@ public class AgendamentosActivity extends AppCompatActivity {
         ibMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Log.e("AgendamentosActivity", token.getToken());
             }
         });
 

@@ -23,4 +23,7 @@ public interface Api {
 
     @POST("usuarios/cadastro")
     Call<JsonObject> cadastrarUsuario(@Body Usuario usuario);
+
+    @POST("usuarios/login")
+    Call<JsonObject> login(@Body Usuario usuario);
 }
