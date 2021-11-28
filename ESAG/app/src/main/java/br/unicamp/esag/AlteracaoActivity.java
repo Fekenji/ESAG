@@ -1,7 +1,9 @@
 package br.unicamp.esag;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +21,7 @@ import retrofit2.Response;
 public class AlteracaoActivity extends AppCompatActivity {
 
     EditText etNovaSenha, etConfirmarNovaSenha;
-    Button btnAlterar;
+    Button btnAlterar, btnExcluir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class AlteracaoActivity extends AppCompatActivity {
         etNovaSenha = (EditText) findViewById(R.id.etNovaSenha);
         etConfirmarNovaSenha = (EditText) findViewById(R.id.etConfirmarNovaSenha);
         btnAlterar = (Button) findViewById(R.id.btnAlterar);
+        btnExcluir = (Button) findViewById(R.id.btnExcluir);
 
         btnAlterar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +73,32 @@ public class AlteracaoActivity extends AppCompatActivity {
 //                        });
                     }
                 }
+            }
+        });
+
+        btnExcluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder caixaDialogo = new AlertDialog.Builder(AlteracaoActivity.this);
+                caixaDialogo.setTitle("Exclusão de conta");
+                caixaDialogo.setIcon(android.R.drawable.ic_menu_delete);
+                caixaDialogo.setMessage("Tem certeza que deseja excluir sua conta?");
+
+                caixaDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Excluir conta
+                    }
+                });
+
+                caixaDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                caixaDialogo.show();
             }
         });
     }
