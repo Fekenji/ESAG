@@ -13,7 +13,7 @@ router.get('/cadastro', (req, res, next) => {
 
 router.post('/cadastro', (req, res, next) => {     
     mysql.getConnection((error, conn) => {
-
+        
         if (error) { return res.status(500).send({ error: error }) }
         bcrypt.hash(req.body.senhaUsuario, 10,(bcryptError, hash) => {
             if (bcryptError) { return res.status(500).send({ error: bcryptError }) }            
