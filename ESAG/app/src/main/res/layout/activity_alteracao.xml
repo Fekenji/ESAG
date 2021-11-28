@@ -5,13 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AlteracaoActivity">
-
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".AlteracaoActivity"
+    android:background="@color/white">
 
     <ImageView
         android:layout_width="219dp"
@@ -65,7 +60,20 @@
         android:text="Alterar"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" />
+
+
+    <Button
+        android:id="@+id/btnExcluir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button"
+        android:text="Excluir Conta"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_marginTop="120dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 
