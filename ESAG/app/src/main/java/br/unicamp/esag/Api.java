@@ -14,7 +14,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface Api {
-    String BASE_URL = "http://192.168.0.42:3000/api/esag/";
+    String BASE_URL = "http://192.168.15.8:3000/api/esag/";
 
     @Headers("Content-Type: application/json")
 
@@ -26,4 +26,7 @@ public interface Api {
 
     @POST("usuarios/login")
     Call<JsonObject> login(@Body Usuario usuario);
+
+    @PUT("usuarios/alteracao")
+    Call<JsonObject> alterar(@Body Usuario usuario);
 }

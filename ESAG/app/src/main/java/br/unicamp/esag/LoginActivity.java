@@ -60,33 +60,36 @@ public class LoginActivity extends AppCompatActivity {
 
         String email = etEmail.getText().toString();
         String senha = etSenha.getText().toString();
-        String nome = "";
-        Usuario usuario = new Usuario(email, senha, nome);
-        Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().login(usuario);
-        call.enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if(response.isSuccessful())
-                {
-                    String receivedToken = response.body().get("token").toString();
-                    Token token = new Token(getApplicationContext());
-                    token.setToken(receivedToken);
-                    Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
-                    startActivity(intent);
-                }
-                else{
-                    Log.e("json response", response.body().toString());
-                    Toast.makeText(LoginActivity.this, "E-mail ou senha inválidos", Toast.LENGTH_LONG).show();
-                }
-            }
 
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                String messageProblem = t.getMessage().toString();
-                Toast.makeText(LoginActivity.this, messageProblem, Toast.LENGTH_SHORT).show();
-                Toast.makeText(LoginActivity.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();
-            }
-        });
+        if (email.trim().equals("")) {
+            Toast.makeText(LoginActivity.this, "Digite o campo de e-mail!", Toast.LENGTH_LONG).show();
+        } else if (senha.trim().equals("")) {
+            Toast.makeText(LoginActivity.this, "Digite o campo de senha!", Toast.LENGTH_LONG).show();
+        } else {
+            String nome = "";
+            Usuario usuario = new Usuario(email, senha, nome);
+            Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().login(usuario);
+            call.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    if(response.isSuccessful()) {
+                        String receivedToken = response.body().get("token").toString();
+                        Token token = new Token(getApplicationContext());
+                        token.setToken(receivedToken);
+                        Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(LoginActivity.this, "E-mail ou senha inválidos", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this, "Erro de servidor", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     class CustomClickableSpan extends ClickableSpan {

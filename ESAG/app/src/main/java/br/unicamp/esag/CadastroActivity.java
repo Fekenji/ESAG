@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    EditText etNome, etEmail, etTelefone, etSenha;
+    EditText etNome, etEmail, etSenha;
     TextView tvLogin;
     Button btnCadastrar;
 
@@ -60,30 +60,37 @@ public class CadastroActivity extends AppCompatActivity {
                 String email = etEmail.getText().toString();
                 String senha = etSenha.getText().toString();
 
-                Usuario usuario = new Usuario(email, senha,nome);
+                if (nome.trim().equals("")) {
+                    Toast.makeText(CadastroActivity.this, "Digite o campo de nome!", Toast.LENGTH_LONG).show();
+                } else if (email.trim().equals("")) {
+                    Toast.makeText(CadastroActivity.this, "Digite o campo de e-mail!", Toast.LENGTH_LONG).show();
+                } else if (senha.trim().equals("")) {
+                    Toast.makeText(CadastroActivity.this, "Digite o campo de senha!", Toast.LENGTH_LONG).show();
+                } else {
+                    Usuario usuario = new Usuario(email, senha,nome);
 
-                Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().cadastrarUsuario(usuario);
-                call.enqueue(new Callback<JsonObject>() {
-                    @Override
-                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                        if(response.isSuccessful())
-                        {
-                            Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            finish();
+                    Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().cadastrarUsuario(usuario);
+                    call.enqueue(new Callback<JsonObject>() {
+                        @Override
+                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                            if(response.isSuccessful())
+                            {
+                                Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), "E-mail inválido", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "E-mail inválido", Toast.LENGTH_SHORT);
+
+                        @Override
+                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                            Log.e("onFailureError", t.getMessage());
                         }
-                    }
-
-                    @Override
-                    public void onFailure(Call<JsonObject> call, Throwable t) {
-                        Log.e("onFailureError", t.getMessage());
-                    }
-                });
-
+                    });
+                }
             }
         });
 

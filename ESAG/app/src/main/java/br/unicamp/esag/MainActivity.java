@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(token.getToken() != "")
+                if(!token.getToken().equals(""))
                 {
-                    intent = new Intent(MainActivity.this, AgendamentosActivity.class);
+                    intent = new Intent(MainActivity.this, AlteracaoActivity.class);
                 }
                 else
-                    intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent = new Intent(MainActivity.this, CadastroActivity.class);
 
                 startActivity(intent);;
                 finish();
@@ -77,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
                             List<Address> enderecos = geocoder.getFromLocation(localizacao.getLatitude(), localizacao.getLongitude(), 1);
-
-                            //Toast.makeText(MainActivity.this, texto, Toast.LENGTH_LONG).show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

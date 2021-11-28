@@ -22,17 +22,13 @@ router.post('/cadastro', (req, res, next) => {
                 [req.body.emailUsuario, hash, req.body.nomeUsuario],
                 (error, resultado) => {
                     conn.release()
-                    if(error) { console.log(error.message);return res.status(500).send({error: error})}
-                    const response = "Usuario criadio :)"                    
+                    if(error) { console.log(error.message);return res.status(500).send({error: error})}                   
                     res.status(201).send({mensagem:"usuario criado"}); 
 
                 }
             )
         })
-
     })
-
-
 })
 
 router.post('/login', (req, res, next) => {
@@ -68,6 +64,26 @@ router.post('/login', (req, res, next) => {
                 })
             }
         )
+    })
+})
+
+
+router.post('/alteracao', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+
+        if (error) { return res.status(500).send({ error: error }) }
+        bcrypt.hash(req.body.senhaUsuario, 10,(bcryptError, hash) => {
+            if (bcryptError) { return res.status(500).send({ error: bcryptError }) }            
+            conn.query(
+                'UPDATE usuario set senhaUsuario = ? where emailUsuario = ?',
+                [hash, req.body.emailUsuario],
+                (error, resultado) => {
+                    conn.release()
+                    if(error) { console.log(error.message);return res.status(500).send({error: error})}               
+                    res.status(201).send({mensagem:"senha modificada"}); 
+                }
+            )
+        })
     })
 })
 
