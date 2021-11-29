@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ListView;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -16,6 +17,7 @@ import java.util.Calendar;
 public class HorariosActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     Button btnEscolherDia;
+    ListView lvHorarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

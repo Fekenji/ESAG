@@ -32,4 +32,7 @@ public interface Api {
 
     @GET("agendamentos")
     Call<List<Agendamentos>> getConsultas(@Header("Authorization") String token);
+
+    @GET("agendamentos/{data}")
+    Call<List<Agendamentos>> getHorarios(@Path("data") String data);
 }

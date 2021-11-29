@@ -42,9 +42,9 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(!token.getToken().equals(""))
+                if(token.getToken().equals(""))
                 {
-                    intent = new Intent(SplashActivity.this, CadastroActivity.class);
+                    intent = new Intent(SplashActivity.this, LoginActivity.class);
                 }
                 else
                     intent = new Intent(SplashActivity.this, MenuActivity.class);

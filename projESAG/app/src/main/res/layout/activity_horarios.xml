@@ -12,12 +12,19 @@
         android:id="@+id/btnEscolherDia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
         android:background="@drawable/style_button"
         android:text="Escolher Dia"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp" />
+        android:textSize="20dp" />
+
+    <ListView
+        android:id="@+id/lViewHorarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/component_border" />
 
 </LinearLayout>

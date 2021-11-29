@@ -29,7 +29,7 @@ public class AgendamentosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agendamentos);
+        setContentView(R.layout.fragment_home);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
         token = new Token(getApplicationContext());
