@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         token = new Token(getApplicationContext());
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if(!token.getToken().equals(""))
                 {
-                    intent = new Intent(MainActivity.this, AlteracaoActivity.class);
+                    intent = new Intent(MainActivity.this, HorariosActivity.class);
                 }
                 else
                     intent = new Intent(MainActivity.this, CadastroActivity.class);
