@@ -3,6 +3,7 @@ const router = express.Router()
 const mysql = require('../mysql').pool
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const login = require('../middleware/login')
 
 
 router.get('/cadastro', (req, res, next) => {
@@ -13,7 +14,7 @@ router.get('/cadastro', (req, res, next) => {
 
 router.post('/cadastro', (req, res, next) => {     
     mysql.getConnection((error, conn) => {
-
+        
         if (error) { return res.status(500).send({ error: error }) }
         bcrypt.hash(req.body.senhaUsuario, 10,(bcryptError, hash) => {
             if (bcryptError) { return res.status(500).send({ error: bcryptError }) }            
@@ -68,15 +69,15 @@ router.post('/login', (req, res, next) => {
 })
 
 
-router.post('/alteracao', (req, res, next) => {
+router.patch('/alteracao', login, (req, res, next) => {
     mysql.getConnection((error, conn) => {
 
-        if (error) { return res.status(500).send({ error: error }) }
+        if (error) { console.log(error.message);return res.status(500).send({ error: error }) }
         bcrypt.hash(req.body.senhaUsuario, 10,(bcryptError, hash) => {
-            if (bcryptError) { return res.status(500).send({ error: bcryptError }) }            
+            if (bcryptError) { console.log(bcryptError.message); return res.status(500).send({ error: bcryptError }) }            
             conn.query(
                 'UPDATE usuario set senhaUsuario = ? where emailUsuario = ?',
-                [hash, req.body.emailUsuario],
+                [hash, req.usuario.emailUsuario],
                 (error, resultado) => {
                     conn.release()
                     if(error) { console.log(error.message);return res.status(500).send({error: error})}               
@@ -85,33 +86,6 @@ router.post('/alteracao', (req, res, next) => {
             )
         })
     })
-})
-
-router.patch('/usuarios', (req, res, next) => {
-
-
-    mysql.getConnection((error, conn) => {
-        conn.query(
-            'UPDATE usuario SET senhaUsuario = ? where emailUsuario = ?',
-            [req.body.senhaUsuario, req.body.emailUsuario],
-            (error, resultado, fields) => {
-                conn.release()
-
-                if (error) {
-                    return res.status(500).send({
-                        error: error.message,
-                        response: null
-                    })
-                }
-
-                res.status(201).send({
-                    mensagem: "usuario atualizado",
-                    novaSenha: resultado.senhaUsuario
-                })
-            }
-        )
-    })
-
 })
 
 module.exports = router

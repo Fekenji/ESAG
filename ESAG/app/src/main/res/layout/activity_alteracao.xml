@@ -73,7 +73,7 @@
         android:text="Excluir Conta"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 

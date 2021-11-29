@@ -14,6 +14,9 @@
         android:theme="@style/Theme.ESAG"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name=".HorariosActivity"
+            android:exported="false" />
+        <activity
             android:name=".AlteracaoActivity"
             android:exported="false" />
         <activity
