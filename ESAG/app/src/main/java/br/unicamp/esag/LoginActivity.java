@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                         String receivedToken = response.body().get("token").toString();
                         Token token = new Token(getApplicationContext());
                         token.setToken(receivedToken);
-                        Intent intent = new Intent(LoginActivity.this, AlteracaoActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, AgendamentosActivity.class);
                         startActivity(intent);
                     }
                     else{

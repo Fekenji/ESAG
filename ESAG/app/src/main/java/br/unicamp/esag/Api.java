@@ -20,9 +20,6 @@ public interface Api {
 
     @Headers("Content-Type: application/json")
 
-    @GET("usuarios")
-    Call<List<Usuario>> getUsuarios();
-
     @POST("usuarios/cadastro")
     Call<JsonObject> cadastrarUsuario(@Body Usuario usuario);
 
@@ -31,4 +28,7 @@ public interface Api {
 
     @PATCH("usuarios/alteracao")
     Call<JsonObject> alterar(@Body Usuario usuario, @Header("Authorization") String token);
+
+    @GET("agendamentos")
+    Call<List<Agendamentos>> getConsultas(@Header("Authorization") String token);
 }
