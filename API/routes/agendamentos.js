@@ -50,7 +50,9 @@ router.post('/agendar', login, (req,res,next) => {
         if(error) { return res.status(500).send({ error: error }) }
         const query = 'insert into consulta(emailUsuario, idHorario) values ('+
                         '?,'+
-                        '(select h.idHorario from horario h, estabelecimento e where h.horario = ? and e.nomeEstabelecimento = ?))'
+                        '(select h.idHorario from horario h, estabelecimento e where h.horario = ? and e.nomeEstabelecimento = ? limit 1))'+
+                        'update horario set disponivel = 0 where '
+                        
         conn.query(
             query,
             [req.usuario.emailUsuario, req.body.horario, req.body.nomeEstabelecimento],

@@ -60,8 +60,6 @@ public class AgendamentosActivity extends AppCompatActivity {
                 List<Agendamentos> agendamentosList = response.body();
                 String[] umAgendamento = new String[agendamentosList.size()];
 
-
-
                 for(int i =0; i < agendamentosList.size(); i++)
                 {
                     umAgendamento[i] = agendamentosList.get(i).getNomeEstabelecimento() + "\n";
@@ -69,14 +67,10 @@ public class AgendamentosActivity extends AppCompatActivity {
                     String ano = agendamentosList.get(i).getHorario().substring(0, 4);
                     String mes = agendamentosList.get(i).getHorario().substring(5, 7);
                     String dia = agendamentosList.get(i).getHorario().substring(8, 10);
-                    String horario = agendamentosList.get(i).getHorario().substring(11, 16)
-                            ;
+                    String horario = agendamentosList.get(i).getHorario().substring(11, 16);
 
                     umAgendamento[i] += String.format("%s/%s/%s, às %s", dia, mes, ano, horario);
 
-                    umAgendamento[i] = agendamentosList.get(i).getHorario() + " ";
-                    umAgendamento[i] += agendamentosList.get(i).getNomeEstabelecimento() + " ";
-                    umAgendamento[i] += agendamentosList.get(i).getLocalizacao();
                 }
 
                 lvAgendamentos.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, umAgendamento));
