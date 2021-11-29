@@ -38,7 +38,8 @@ public class AgendamentosActivity extends AppCompatActivity {
 
         ibMenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Log.e("AgendamentosActivity", token.getToken());
             }
         });

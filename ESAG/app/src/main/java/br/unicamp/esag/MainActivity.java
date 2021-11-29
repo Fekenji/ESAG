@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if(!token.getToken().equals(""))
                 {
-                    intent = new Intent(MainActivity.this, AlteracaoActivity.class);
+                    intent = new Intent(MainActivity.this, AgendamentosActivity.class);
                 }
                 else
                     intent = new Intent(MainActivity.this, CadastroActivity.class);

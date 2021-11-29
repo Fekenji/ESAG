@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_baseline_account_box_24"
+            android:title="Ver perfil" />
+        <item
+            android:id="@+id/nav_agendamentos"
+            android:icon="@drawable/ic_baseline_calendar_today_24"
+            android:title="Ver agendamentos" />
+        <item
+            android:id="@+id/nav_agendar"
+            android:icon="@drawable/ic_baseline_event_24"
+            android:title="Agendar" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_baseline_vertical_align_bottom_24"
+            android:title="Sair" />
+    </group>
+</menu>
