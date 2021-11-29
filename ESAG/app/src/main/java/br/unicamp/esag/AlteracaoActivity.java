@@ -47,30 +47,30 @@ public class AlteracaoActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "As senhas precisam ser iguais!", Toast.LENGTH_SHORT).show();
                     } else {
                         Token token = new Token(getApplicationContext());
+                        String finalToken = "Bearer " + token.getToken().replaceAll("\"", "");
+                        Usuario usuario = new Usuario("", novaSenha, "");
+                        Log.e("tokenGerado", finalToken);
 
-                        String email = token.getToken().toString();
-                        Log.e("onFailureError", email);
+                        Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().alterar(usuario, finalToken);
+                        call.enqueue(new Callback<JsonObject>() {
+                            @Override
+                            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                                if(response.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Senha modificada com sucesso!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(AlteracaoActivity.this, AgendamentosActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else{
+                                    Log.e("responseNotSuccessful", response.toString());
+                                }
+                            }
 
-//                        Usuario usuario = new Usuario(email, novaSenha, "");
-//
-//                        Call<JsonObject> call = RetrofitClient.getRetrofitInstance().getMyApi().alterar(usuario);
-//
-//                        call.enqueue(new Callback<JsonObject>() {
-//                            @Override
-//                            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                                if(response.isSuccessful()) {
-//                                    Toast.makeText(getApplicationContext(), "Senha modificada com sucesso!", Toast.LENGTH_SHORT).show();
-//                                    Intent intent = new Intent(AlteracaoActivity.this, AgendamentosActivity.class);
-//                                    startActivity(intent);
-//                                    finish();
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onFailure(Call<JsonObject> call, Throwable t) {
-//                                Log.e("onFailureError", t.getMessage());
-//                            }
-//                        });
+                            @Override
+                            public void onFailure(Call<JsonObject> call, Throwable t) {
+                                Log.e("onFailureError", t.getMessage());
+                            }
+                        });
                     }
                 }
             }

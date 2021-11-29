@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/teal_700</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.ESAG.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.ESAG.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.ESAG.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
