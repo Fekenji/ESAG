@@ -16,7 +16,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface Api {
-    String BASE_URL = "http://192.168.0.42:3000/api/esag/";
+    String BASE_URL = "http://192.168.0.18:3000/api/esag/";
 
     @Headers("Content-Type: application/json")
 

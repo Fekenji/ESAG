@@ -57,7 +57,8 @@
             android:id="@+id/tvCadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/btnEntrar"
