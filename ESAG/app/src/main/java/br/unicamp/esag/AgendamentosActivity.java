@@ -61,12 +61,10 @@ public class AgendamentosActivity extends AppCompatActivity {
 
                 for(int i =0; i < agendamentosList.size(); i++)
                 {
+                    umAgendamento[i] = agendamentosList.get(i).getHorario() + " ";
                     umAgendamento[i] += agendamentosList.get(i).getNomeEstabelecimento() + " ";
-                    umAgendamento[i] += agendamentosList.get(i).getHorario() + " ";
                     umAgendamento[i] += agendamentosList.get(i).getLocalizacao();
-
                 }
-
 
                 lvAgendamentos.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, umAgendamento));
             }
