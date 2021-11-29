@@ -23,11 +23,28 @@ router.get('/', login, (req,res,next) => {
                 conn.release()
                 if(error) { console.log(error); return res.status(500).send({error: error})}
                 console.log({resultado: results})
-                return res.status(200).send({response: results})
+                return res.status(200).send(results)
+            }
+        )            
+    })
+})
+
+router.get('/:data', (req, res) => {
+    mysql.getConnection((error, conn) => {
+
+        if(error) { console.log(error); return res.status(500).send({ error: error})}
+        const query = 'select e.nomeEstabelecimento, h.horario from horario h, estabelecimento e where DATE(h.horario) = ?'
+
+        conn.query(
+            query,
+            [req.params.data],
+            (error, results) => {
+                conn.release()
+                if(error) { console.log(error); return res.status(500).send({ error: error})}
+                console.log(results)
+                return res.status(200).send(results)
             }
         )
-       
-        
     })
 })
 

@@ -11,6 +11,9 @@ public class Token {
     public Token(Context context)
     {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        if(!sharedPreferences.contains("token"))
+            setToken("");
+
     }
 
     public void setToken(String token)

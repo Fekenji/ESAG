@@ -5,6 +5,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -39,6 +40,8 @@ public class HorariosActivity extends AppCompatActivity implements DatePickerDia
         calendar.set(Calendar.MONTH, i1);
         calendar.set(Calendar.DAY_OF_MONTH, i2);
 
-        String dataEscolhida = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        String data = String.format("%d-%d-%d", i, i1, i2);
+        Log.wtf("createdString", data);
+
     }
 }

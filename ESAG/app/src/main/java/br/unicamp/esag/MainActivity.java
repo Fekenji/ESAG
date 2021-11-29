@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         token = new Token(getApplicationContext());
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         buscarInformacoesGPS();
@@ -50,11 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if(!token.getToken().equals(""))
                 {
-<<<<<<< HEAD
                     intent = new Intent(MainActivity.this, LoginActivity.class);
-=======
-                    intent = new Intent(MainActivity.this, HorariosActivity.class);
->>>>>>> 7027b29891283ce99aa20096783065d2d2f8e114
                 }
                 else
                     intent = new Intent(MainActivity.this, CadastroActivity.class);
