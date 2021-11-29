@@ -44,10 +44,10 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if(!token.getToken().equals(""))
                 {
-                    intent = new Intent(SplashActivity.this, MenuActivity.class);
+                    intent = new Intent(SplashActivity.this, CadastroActivity.class);
                 }
                 else
-                    intent = new Intent(SplashActivity.this, CadastroActivity.class);
+                    intent = new Intent(SplashActivity.this, MenuActivity.class);
 
                 startActivity(intent);
                 finish();

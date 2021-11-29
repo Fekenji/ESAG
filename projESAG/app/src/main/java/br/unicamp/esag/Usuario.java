@@ -1,7 +1,6 @@
-package br.unicamp.esag.Classes;
+package br.unicamp.esag;
 
 import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Usuario implements Serializable{

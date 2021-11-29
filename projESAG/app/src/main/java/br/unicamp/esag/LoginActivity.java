@@ -3,6 +3,7 @@ package br.unicamp.esag;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -11,6 +12,7 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +25,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import br.unicamp.esag.Classes.Usuario;
-
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etSenha;
@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
         etEmail = (EditText) findViewById(R.id.etEmail);
         etSenha = (EditText) findViewById(R.id.etSenha);

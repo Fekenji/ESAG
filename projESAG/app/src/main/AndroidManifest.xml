@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ESAG">
         <activity
+            android:name=".HorariosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgendamentosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlteracaoActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity

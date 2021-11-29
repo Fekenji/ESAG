@@ -13,6 +13,7 @@ public class Token {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         if(!sharedPreferences.contains("token"))
             setToken("");
+
     }
 
     public void setToken(String token)
@@ -20,7 +21,7 @@ public class Token {
         sharedPreferences.edit().putString("token", token).commit();
     }
 
-    public String getToken() { return sharedPreferences.getString("token", ""); }
+    public String getToken() { return sharedPreferences.getString("token", null); }
 
 
 }
