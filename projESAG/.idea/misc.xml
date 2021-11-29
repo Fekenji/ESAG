@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/drawable-v24/ic_baseline_account_box_24.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/drawable-v24/ic_baseline_calendar_today_24.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/drawable-v24/ic_baseline_event_24.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/drawable-v24/ic_baseline_vertical_align_bottom_24.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/drawable-v24/style_button.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/drawable-v24/style_edit_text.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/activity_cadastro.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/activity_login.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/activity_menu.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/activity_splash.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/app_bar_menu.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/content_menu.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/fragment_gallery.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/fragment_slideshow.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/layout/nav_header_menu.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/projESAG/app/src/main/res/menu/activity_menu123_drawer.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

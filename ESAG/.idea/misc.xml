@@ -3,11 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/drawable/ic_baseline_event_24.xml" value="0.3828125" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/drawable/ic_baseline_vertical_align_bottom_24.xml" value="0.3828125" />
         <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/activity_agendamentos.xml" value="0.2957427536231884" />
         <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/activity_cadastro.xml" value="0.2957427536231884" />
         <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/activity_login.xml" value="0.20520833333333333" />
         <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/activity_menu.xml" value="0.23324275362318841" />
         <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/activity_splash.xml" value="0.2694746376811594" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/app_bar_menu.xml" value="0.23324275362318841" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/content_menu.xml" value="0.23324275362318841" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/fragment_gallery.xml" value="0.23324275362318841" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/fragment_home.xml" value="0.23324275362318841" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/fragment_slideshow.xml" value="0.23324275362318841" />
+        <entry key="..\:/COTUCA/ProjetosMobile/AndroidStudio/AppESAG/ESAG-52b93e2c37aa1f5314ec37abbd0157ce1130e19c/ESAG/ESAG/app/src/main/res/layout/nav_header_menu.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/Gabriel/Documents/GitHub/ESAG/ESAG/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
         <entry key="..\:/Users/Gabriel/Documents/GitHub/ESAG/ESAG/app/src/main/res/drawable/component_border.xml" value="0.3828125" />
         <entry key="..\:/Users/Gabriel/Documents/GitHub/ESAG/ESAG/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
