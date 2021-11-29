@@ -33,6 +33,11 @@ public interface Api {
     @GET("agendamentos")
     Call<List<Agendamentos>> getConsultas(@Header("Authorization") String token);
 
+    @POST("agendamentos/agendar")
+    Call<JsonObject> agendarHorario(@Header("Authorization") String token, @Body Agendamentos agendamentos);
+
     @GET("agendamentos/{data}")
     Call<List<Agendamentos>> getHorarios(@Path("data") String data);
+
+
 }

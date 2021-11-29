@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_agendamentos"
         android:name="br.unicamp.esag.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_agendamentos"
         tools:layout="@layout/fragment_home" />
 
     <fragment

@@ -31,7 +31,7 @@ router.get('/:data', (req, res) => {
     mysql.getConnection((error, conn) => {
 
         if(error) { console.log(error); return res.status(500).send({ error: error})}
-        const query = 'select e.nomeEstabelecimento, h.horario from horario h, estabelecimento e where DATE(h.horario) = ? and disponivel = 1'
+        const query = 'select e.nomeEstabelecimento, h.horario, e.localizacao from horario h, estabelecimento e where DATE(h.horario) = ? and disponivel = 1'
 
         conn.query(
             query,
@@ -50,12 +50,12 @@ router.post('/agendar', login, (req,res,next) => {
         if(error) { return res.status(500).send({ error: error }) }
         const query = 'insert into consulta(emailUsuario, idHorario) values ('+
                         '?,'+
-                        '(select h.idHorario from horario h, estabelecimento e where h.horario = ? and e.nomeEstabelecimento = ? limit 1))'+
-                        'update horario set disponivel = 0 where '
+                        '(select h.idHorario from horario h, estabelecimento e where h.horario = ? and e.nomeEstabelecimento = ? and h.disponivel = 1 limit 1));'+
+                        'update horario set disponivel = 0 where idHorario = (select h.idHorario from horario h, estabelecimento e where h.horario = ? and e.nomeEstabelecimento = ? and h.disponivel = 1 limit 1) '
                         
         conn.query(
             query,
-            [req.usuario.emailUsuario, req.body.horario, req.body.nomeEstabelecimento],
+            [req.usuario.emailUsuario, req.body.horario, req.body.nomeEstabelecimento,req.body.horario, req.body.nomeEstabelecimento],
             (error, results) => {
                 conn.release()
                 if(error) { console.log(error); return res.status(500).send({ error: error })}

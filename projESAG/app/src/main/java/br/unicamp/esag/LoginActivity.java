@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                         String receivedToken = response.body().get("token").toString();
                         Token token = new Token(getApplicationContext());
                         token.setToken(receivedToken);
-                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HorariosActivity.class);
                         startActivity(intent);
                     }
                     else{
