@@ -1,3 +1,4 @@
+
 package br.unicamp.esag;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,8 +73,11 @@ public class AgendamentosActivity extends AppCompatActivity {
                             ;
 
                     umAgendamento[i] += String.format("%s/%s/%s, às %s", dia, mes, ano, horario);
-                }
 
+                    umAgendamento[i] = agendamentosList.get(i).getHorario() + " ";
+                    umAgendamento[i] += agendamentosList.get(i).getNomeEstabelecimento() + " ";
+                    umAgendamento[i] += agendamentosList.get(i).getLocalizacao();
+                }
 
                 lvAgendamentos.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, umAgendamento));
             }
